@@ -225,7 +225,7 @@ $.widget("ui.multiselect", {
 	},
 	// insert new <option> and _populate
 	// @return int   the number of options added
-	addOptions: function(data) {
+	addOptions: function(data, selected) {
 		if (this.enabled()) {
 			this._setBusy(true);
 
@@ -235,7 +235,7 @@ $.widget("ui.multiselect", {
 				for (var key in data) {
 					// check if the option does not exist already
 					if (this.element.find('option[value="'+key+'"]').size()==0) {
-						elements.push( $('<option value="'+key+'"/>').text(data[key].value).appendTo(this.element)[0] );
+						elements.push( $('<option value="'+key+'" '+ (selected ? 'selected="selected"' : '') +'/>').text(data[key].value).appendTo(this.element)[0] );
 					}
 				}
 			}
